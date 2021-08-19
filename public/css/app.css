@@ -10002,3 +10002,39 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
+.cs-theme {
+  background-color: #0077B6 !important;
+  color: white !important;
+}
+
+.cs-theme-white {
+  background-color: white !important;
+}
+
+.nav-sidebar .nav-link p{
+  color: white;
+}
+
+.nav-sidebar .nav-link i{
+  color: white;
+}
+
+.nav-header {
+  color: white !important;
+}
+
+.bg-ijo-cs {
+  background-color: #4CA1A3;
+  color :white;
+}
+
+.bg-biru-sp-cs {
+  background-color: #0E6BA8;
+  color: white;
+}
+
+.bg-orange1-cs {
+  background-color: #FFAA4C;
+  color: white;
+}
