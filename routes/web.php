@@ -34,3 +34,27 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home');
+
+Route::get('/op-data-guru', function() {
+    return view('operator.opdataguru');
+})->name('opdataguru');
+
+Route::get('/op-data-staff', function() {
+    return view('operator.opdatastaff');
+})->name('opdatastaff');
+
+Route::get('/op-data-siswa', function() {
+    return view('operator.opdatasiswa');
+})->name('opdatasiswa');
+
+Route::get('/op-data-guru/detail', function() {
+    return view('operator.detailguru');
+})->name('opdetailguru');
+
+Route::get('/op-data-guru/detail-personal', function() {
+    return view('operator.detailgurudiri');
+})->name('opdetailgurupersonal');
+
+Route::get('/op-data-guru/detail-family', function() {
+    return view('operator.detailgurufam');
+})->name('opdetailgurufam');

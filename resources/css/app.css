@@ -28,3 +28,8 @@
   background-color: #0E6BA8;
   color: white;
 }
+
+.nav-sidebar .nav-link :active{
+  background-color: white !important;
+  color: #0077B6 !important;
+}

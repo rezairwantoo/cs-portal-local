@@ -247,25 +247,24 @@ return [
         // Sidebar items:
         [
             'text'        => 'Dashboard',
-            'url'         => 'admin/pages',
+            'url'         => 'home',
             'icon'        => 'fas fa-chart-line',
-            'label'       => 4,
             'label_color' => 'success cs-theme',
         ],
         ['header' => 'Data Pengguna'],
         [
             'text' => 'Data Guru',
-            'url'  => '',
+            'url'  => 'op-data-guru',
             'icon' => 'fas fa-fw fa-id-badge',
         ],
         [
             'text' => 'Data Staff',
-            'url'  => '',
+            'url'  => 'op-data-staff',
             'icon' => 'fas fa-fw fa-id-badge',
         ],
         [
             'text' => 'Data Siswa',
-            'url'  => '',
+            'url'  => 'op-data-siswa',
             'icon' => 'fas fa-fw fa-id-badge',
         ],
         ['header' => 'Kesiswaan'],
@@ -343,33 +342,58 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/select2/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/select2/css/select2.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css',
+                ],
+            ],
+        ],
+        'tempusdominusBootstrap4' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],
