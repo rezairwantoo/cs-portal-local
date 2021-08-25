@@ -58,3 +58,19 @@ Route::get('/op-data-guru/detail-personal', function() {
 Route::get('/op-data-guru/detail-family', function() {
     return view('operator.detailgurufam');
 })->name('opdetailgurufam');
+
+Route::get('/op-data-guru/detail-study', function() {
+    return view('operator.detailgurustudy');
+})->name('opdetailgurustudy');
+
+Route::get('/op-data-op/detail-personal', function() {
+    return view('operator.detailopdiri');
+})->name('opdetailoppersonal');
+
+Route::get('/op-data-op/detail-family', function() {
+    return view('operator.detailopfam');
+})->name('opdetailopfam');
+
+Route::get('/op-data-op/detail-study', function() {
+    return view('operator.detailopstudy');
+})->name('opdetailopstudy');

@@ -21,11 +21,11 @@
     @php
     $heads = [
         ['label' => '#', 'width' => 5],
-        ['label' => 'Nama', 'width' => 30],
-        ['label' => 'Hubungan Keluarga', 'width' => 10],
-        ['label' => 'Pekerjaan', 'width' => 10],
-        ['label' => 'Tempat Lahir', 'width' => 10],
-        ['label' => 'Tanggal Lahir', 'width' => 40],
+        ['label' => 'Universitas', 'width' => 30],
+        ['label' => 'Jurusan', 'width' => 30],
+        ['label' => 'Program Studi', 'width' => 10],
+        ['label' => 'Tahun Masuk', 'width' => 10],
+        ['label' => 'Tahun Lulus', 'width' => 10],
         ['label' => '', 'width' => 40],
     ];
 
@@ -41,9 +41,9 @@
 
     $config = [
         'data' => [
-            [1, 'Nama Keluarga', 'Anak', 'Mahasiswa', 'Serang', 'Selasa, 24 Agustus 1990', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [2, 'Nama Keluarga', 'Anak', 'Mahasiswa', 'Serang', 'Selasa, 24 Agustus 1990', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [3, 'Nama Keluarga', 'Anak', 'Mahasiswa', 'Serang', 'Selasa, 24 Agustus 1990', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [1, 'Universitas', 'Jurusan', 'Program Studi', 'Tahun Masuk', 'Tahun Lulus', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [2, 'Universitas', 'Jurusan', 'Program Studi', 'Tahun Masuk', 'Tahun Lulus', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [3, 'Universitas', 'Jurusan', 'Program Studi', 'Tahun Masuk', 'Tahun Lulus', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
         ],
         'order' => [[1, 'asc']],
         'columns' => [null, null, null, null, null, ['orderable' => false], ['orderable' => false]],
@@ -55,18 +55,17 @@
             <div class="card card-outline card-primary">
                 <div class="card-header">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Mata Pelajaran</a>
-                        <a href="{{ url('op-data-guru/detail-personal') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Diri</a>
-                        <a href="{{ url('op-data-guru/detail-family') }}" type="button" class="btn btn-secondary" style="background-color: #0E6BA8;">Data Keluarga</a>
-                        <a href="{{ url('op-data-guru/detail-study') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Pendidikan</a>
-                        <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Hak Akses</a>
+                        <a href="{{ url('op-data-op/detail-personal') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Diri</a>
+                        <a href="{{ url('op-data-op/detail-family') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Keluarga</a>
+                        <a href="{{ url('op-data-op/detail-study') }}" type="button" class="btn btn-secondary" style="background-color: #0E6BA8;">Data Pendidikan</a>
+                        <a href="{{ url('op-data-op/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Hak Akses</a>
                     </div>
                 </div>
                 
                 <div class="card-body">
                     <div class="row" style="margin-bottom: 25px;">
                         <div class="col-4">
-                            <x-adminlte-button label="Tambah Data Keluarga" data-toggle="modal" data-target="#modalCustomAddFam" theme="biru-sp-cs"/>
+                            <x-adminlte-button label="Tambah Data Pendidikan" data-toggle="modal" data-target="#modalCustomAddFam" theme="biru-sp-cs"/>
                         </div> 
                         
                     </div>
@@ -89,46 +88,37 @@
         </div>
     </div>
 
-    <x-adminlte-modal id="modalCustomAddFam" title="Tambah Data Keluarga" size="lg" theme="biru-sp-cs"
+    <x-adminlte-modal id="modalCustomAddFam" title="Tambah Data Pendidikan" size="lg" theme="biru-sp-cs"
         icon="" v-centered static-backdrop scrollable>
         <div style="height:400px;margin: auto;width: 50%;padding: 10px;">
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Nama" placeholder="Nama" disable-feedback/>
+                    <x-adminlte-input name="iLabel" label="Universitas" placeholder="Universitas" disable-feedback/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-select2 label="Hubungan Keluarga" name="sel2Basic">
-                        <option>Suami</option>
-                        <option disabled>Istri</option>
-                        <option>Anak</option>
-                        <option disabled>Kerabat</option>
+                    <x-adminlte-input name="iLabel" label="Jurusan" placeholder="Jurusan" disable-feedback/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <x-adminlte-select2 label="Program Studi" name="sel2Basic">
+                        <option>S1</option>
+                        <option disabled>S2</option>
+                        <option>S3</option>
                     </x-adminlte-select2>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Pekerjaan" placeholder="Pekerjaan" disable-feedback/>
+                    <x-adminlte-input name="iLabel" label="Tahun Masuk" placeholder="Tahun Masuk" disable-feedback/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Tempat Lahir" placeholder="Tempat Lahir" disable-feedback/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    @php
-                        $configDate = ['format' => 'DD/MM/YYYY'];
-                    @endphp
-                    <x-adminlte-input-date label="Tanggal Lahir" name="idDateOnly" :config="$configDate" placeholder="Choose a date...">
-                        <x-slot name="appendSlot">
-                            <div class="input-group-text bg-gradient-danger">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input-date>
+                    <x-adminlte-input name="iLabel" label="Tahun Lulus" placeholder="Tahun Lulus" disable-feedback/>
                 </div>
             </div>
         </div>
@@ -139,46 +129,37 @@
         </x-slot>
     </x-adminlte-modal>
 
-    <x-adminlte-modal id="modalCustomEditFam" title="Ubah Data Keluarga" size="lg" theme="biru-sp-cs"
+    <x-adminlte-modal id="modalCustomEditFam" title="Ubah Data Pendidikan" size="lg" theme="biru-sp-cs"
         icon="" v-centered static-backdrop scrollable>
         <div style="height:400px;margin: auto;width: 50%;padding: 10px;">
-            <div class="row">
+        <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Nama" placeholder="Nama" disable-feedback/>
+                    <x-adminlte-input name="iLabel" label="Universitas" placeholder="Universitas" disable-feedback/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-select2 label="Hubungan Keluarga" name="sel2Basic">
-                        <option>Suami</option>
-                        <option disabled>Istri</option>
-                        <option>Anak</option>
-                        <option disabled>Kerabat</option>
+                    <x-adminlte-input name="iLabel" label="Jurusan" placeholder="Jurusan" disable-feedback/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <x-adminlte-select2 label="Program Studi" name="sel2Basic">
+                        <option>S1</option>
+                        <option disabled>S2</option>
+                        <option>S3</option>
                     </x-adminlte-select2>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Pekerjaan" placeholder="Pekerjaan" disable-feedback/>
+                    <x-adminlte-input name="iLabel" label="Tahun Masuk" placeholder="Tahun Masuk" disable-feedback/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Tempat Lahir" placeholder="Tempat Lahir" disable-feedback/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    @php
-                        $configDate = ['format' => 'DD/MM/YYYY'];
-                    @endphp
-                    <x-adminlte-input-date label="Tanggal Lahir" name="idDateOnly" :config="$configDate" placeholder="Choose a date...">
-                        <x-slot name="appendSlot">
-                            <div class="input-group-text bg-gradient-danger">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input-date>
+                    <x-adminlte-input name="iLabel" label="Tahun Lulus" placeholder="Tahun Lulus" disable-feedback/>
                 </div>
             </div>
         </div>
@@ -196,13 +177,7 @@
                 <i class="far fa-lg fa-fw fa-question-circle" style="font-size: 100px;"></i>
             </div>
             <br />
-            <span style="font-size: 20px;font-weight: 700;">Data keluarga akan anda hapus</span>
-            <br />
-            <span style="font-size: 20px;font-weight: 700;">Atas Nama Guru 1</span>
-            <br />
-            <span style="font-size: 20px;font-weight: 700;">Dengan Email Email 1</span>
-            <br />
-            <br />
+            <span style="font-size: 20px;font-weight: 700;">Data pendidikan akan anda hapus</span>
             <br />
             <span style="font-size: 20px;font-weight: 700;">Apakah anda yakin ?</span>
             

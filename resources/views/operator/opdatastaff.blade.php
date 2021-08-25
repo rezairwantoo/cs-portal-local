@@ -15,10 +15,10 @@
         ['label' => 'Actions', 'no-export' => true, 'width' => 5],
     ];
 
-    $btnEdit = '<button class="btn btn-xs" title="Approve" data-toggle="modal" data-target="#modalCustom" class="bg-teal">
-                    <i class="fa fa-lg fa-fw fa-check color-ijo-cs"></i>
+    $btnEdit = '<button class="btn btn-xs" title="Approve">
+                    <i class="fa fa-lg fa-fw fa-check color-ijo-cs" data-toggle="modal" data-target="#modalCustom"></i>
                 </button>';
-    $btnDelete = '<button class="btn btn-xs text-danger" title="Reject">
+    $btnDelete = '<button class="btn btn-xs text-danger" data-toggle="modal" data-target="#modalCustomReject" title="Reject">
                     <i class="fa fa-lg fa-fw fa-times"></i>
                 </button>';
     $btnDetails = '<button class="btn btn-xs text-teal" title="Details">
@@ -66,10 +66,11 @@
         ['label' => 'Actions', 'no-export' => true, 'width' => 5],
     ];
 
-    $btnEdit = '<button class="btn btn-xs text-primary" title="Edit">
+    $url = url("/op-data-op/detail-personal");
+    $btnEdit = '<a href="'.$url.'"  class="btn btn-xs text-primary" title="Edit">
                     <i class="fa fa-lg fa-fw fa-pen"></i>
-                </button>';
-    $btnDelete = '<button class="btn btn-xs text-danger" title="Delete">
+</a>';
+    $btnDelete = '<button class="btn btn-xs text-danger" data-toggle="modal" data-target="#modalCustomDelete" title="Delete">
                     <i class="fa fa-lg fa-fw fa-trash"></i>
                 </button>';
     $btnDetails = '<button class="btn btn-xs text-teal" title="Details">
@@ -78,9 +79,9 @@
 
     $config = [
         'data' => [
-            [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+            [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
         ],
         'order' => [[1, 'asc']],
         'columns' => [null, null, null, ['orderable' => false]],
@@ -116,17 +117,68 @@
                 <i class="far fa-lg fa-fw fa-question-circle" style="font-size: 100px;"></i>
             </div>
             <br />
-            <span style="font-size: 20px;font-weight: 700;">Pengajuan data guru akan diterima</span>
+            <span style="font-size: 20px;font-weight: 700;">Pengajuan data staff akan diterima</span>
             <br />
-            <span style="font-size: 20px;font-weight: 700;">Atas Nama Guru 1</span>
+            <span style="font-size: 20px;font-weight: 700;">Atas Nama staff 1</span>
             <br />
             <span style="font-size: 20px;font-weight: 700;">Dengan Email Email 1</span>
             <br />
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Apakah anda yakin ?</span>
         </div>
 
         <x-slot name="footerSlot">
             <x-adminlte-button class="mr-auto" theme="success" label="Terima"/>
-            <x-adminlte-button theme="danger" label="Tolak" data-dismiss="modal"/>
+            <x-adminlte-button theme="danger" label="Batal" data-dismiss="modal"/>
+        </x-slot>
+    </x-adminlte-modal>
+
+    <x-adminlte-modal id="modalCustomReject" title="Persetujuan Pengguna" size="lg" theme="biru-sp-cs"
+        icon="" v-centered static-backdrop scrollable>
+        <div style="height:400px;margin: auto;width: 50%;padding: 10px;text-align:center;">
+            <div style="height:100px;margin-top:80px;color:#D81159;">
+                <i class="far fa-lg fa-fw fa-question-circle" style="font-size: 100px;"></i>
+            </div>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Pengajuan data staff akan ditolak</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Atas Nama staff 1</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Dengan Email Email 1</span>
+            <br />
+            <br />
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Apakah anda yakin ?</span>
+        </div>
+
+        <x-slot name="footerSlot">
+            <x-adminlte-button class="mr-auto" theme="success" label="Tolak"/>
+            <x-adminlte-button theme="danger" label="Batal" data-dismiss="modal"/>
+        </x-slot>
+    </x-adminlte-modal>
+
+    <x-adminlte-modal id="modalCustomDelete" title="Hapus Data Guru" size="lg" theme="biru-sp-cs"
+        icon="" v-centered static-backdrop scrollable>
+        <div style="height:400px;margin: auto;width: 50%;padding: 10px;text-align:center;">
+            <div style="height:100px;margin-top:80px;color:#D81159;">
+                <i class="far fa-lg fa-fw fa-question-circle" style="font-size: 100px;"></i>
+            </div>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Data staff, akan anda hapus</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Atas Nama staff 1</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Dengan Email Email 1</span>
+            <br />
+            <br />
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Apakah anda yakin ?</span>
+            
+        </div>
+
+        <x-slot name="footerSlot">
+            <x-adminlte-button class="mr-auto" theme="success" label="Hapus"/>
+            <x-adminlte-button theme="danger" label="Batal" data-dismiss="modal"/>
         </x-slot>
     </x-adminlte-modal>
     {{-- Example button to open modal --}}

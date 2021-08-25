@@ -53,11 +53,10 @@
             <div class="card card-outline card-primary">
                 <div class="card-header">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Mata Pelajaran</a>
-                        <a href="{{ url('op-data-guru/detail-personal') }}" type="button" class="btn btn-secondary" style="background-color: #0E6BA8">Data Diri</a>
-                        <a href="{{ url('op-data-guru/detail-family') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Keluarga</a>
-                        <a href="{{ url('op-data-guru/detail-study') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Pendidikan</a>
-                        <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Hak Akses</a>
+                        <a href="{{ url('op-data-op/detail-personal') }}" type="button" class="btn btn-secondary" style="background-color: #0E6BA8">Data Diri</a>
+                        <a href="{{ url('op-data-op/detail-family') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Keluarga</a>
+                        <a href="{{ url('op-data-op/detail-study') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Pendidikan</a>
+                        <a href="{{ url('op-data-op/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Hak Akses</a>
                     </div>
                 </div>
                 

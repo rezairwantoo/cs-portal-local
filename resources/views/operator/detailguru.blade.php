@@ -56,7 +56,7 @@
                         <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: #0E6BA8">Mata Pelajaran</a>
                         <a href="{{ url('op-data-guru/detail-personal') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Diri</a>
                         <a href="{{ url('op-data-guru/detail-family') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Keluarga</a>
-                        <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Pendidikan</a>
+                        <a href="{{ url('op-data-guru/detail-study') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Data Pendidikan</a>
                         <a href="{{ url('op-data-guru/detail') }}" type="button" class="btn btn-secondary" style="background-color: white; color:#0E6BA8; border:none;">Hak Akses</a>
                     </div>
                 </div>
