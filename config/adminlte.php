@@ -275,7 +275,7 @@ return [
         ],
         [
             'text' => 'Kehadiran Siswa',
-            'url'  => '',
+            'url'  => 'op-kehadiran-siswa',
             'icon' => 'fas fa-fw fa-address-book',
         ],
         ['header' => 'Pembelajaran'],
@@ -429,6 +429,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'BsCustomFileInput' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
                 ],
             ],
         ],

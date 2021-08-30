@@ -3,7 +3,7 @@
 @section('plugins.Datatables', true)
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 @section('content_header')
-    <h1 class="m-0 text-dark">Data Guru</h1>
+    <h1 class="m-0 text-dark">Kehadiran Siswa</h1>
 @stop
 <?php $totalSiswa = 100;?>
 @section('content')
@@ -15,7 +15,6 @@
         ['label' => 'Nama Guru', 'width' => 40],
         ['label' => 'Email Guru', 'width' => 40],
         ['label' => 'Tipe', 'width' => 40],
-        ['label' => 'Actions', 'no-export' => true, 'width' => 5],
     ];
 
     $url = url("/op-data-guru/detail");
@@ -30,12 +29,13 @@
 
     $config = [
         'data' => [
-            [22,'23456789', 'John Bender', 'john@bender.com', 'Guru', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [19, '987654321', 'Sophia Clemens', 'sophia@clemens.com', 'Guru', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [3, '12367345243', 'Peter Sousa', 'peter@sousa', 'Guru', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [1, 'Nama Siswa 1', '23 September 2021', '14:00 - 15:30', '<span style="color:green;">Hadir</span>'],
+            [2, 'Nama Siswa 2', '23 September 2021', '14:00 - 15:30', '<span style="color:red;">Tanpa Keterangan</span>'],
+            [3, 'Nama Siswa 3', '23 September 2021', '14:00 - 15:30', '<span style="color:blue;">Izin</span>'],
+            [4, 'Nama Siswa 4', '23 September 2021', '14:00 - 15:30', '<span style="color:orange;">Sakit</span>'],
         ],
         'order' => [[1, 'asc']],
-        'columns' => [null, null, null, null, null, ['orderable' => false]],
+        'columns' => [null, null, null,null, ['orderable' => false]],
     ];
     $config["lengthMenu"] = [ 10, 50, 100, 500];
     @endphp
@@ -43,13 +43,45 @@
         <div class="col-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Daftar Guru</h3>
+                    <h3 class="card-title">Daftar Kehadiran Siswa</h3>
                 </div>
                 
                 <div class="card-body">
-                    <div clas="col-4">
-                        <x-adminlte-button label="Import Data Siswa" data-toggle="modal" data-target="#modalUploadFile" theme="biru-sp-cs"/>
+                    <div class="row">
+                        <div class="col-3">
+                            <x-adminlte-select2 label="Tahun Ajaran"  name="sel2Basic">
+                                <option></option>
+                                <option disabled>2021-2020</option>
+                                <option selected>2020-2019</option>
+                            </x-adminlte-select2>
+
+                        </div>
+                        <div class="col-3">
+                            <x-adminlte-select2 label="Kelas" name="sel2Basic">
+                                <option>Seluruh Kelas</option>
+                                <option disabled>Kelas 7A</option>
+                                <option selected>Kelas 7B</option>
+                            </x-adminlte-select2>
+                        </div>
+                        
+                        <div class="col-3">
+                            @php
+                                $configDate = ['format' => 'DD/MM/YYYY'];
+                            @endphp
+                            <x-adminlte-input-date label="Tanggal Pertemuan" name="idDateOnly" :config="$configDate" placeholder="Choose a date...">
+                                <x-slot name="appendSlot">
+                                    <div class="input-group-text bg-gradient-danger">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                </x-slot>
+                            </x-adminlte-input-date>
+                        </div>
+
+                        <div clas="col-3">
+                            <x-adminlte-button label="Terapkan" data-toggle="modal" data-target="#modalUploadFile" theme="biru-sp-cs" style="margin-top: 32px;"/>
+                        </div>
                     </div>
+                    
                     <br />
                     <x-adminlte-datatable id="table2" :heads="$heads" :config="$config" theme="light" striped hoverable>
                         @foreach($config['data'] as $row)

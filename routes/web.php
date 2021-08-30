@@ -21,6 +21,10 @@ Route::get('/login', function() {
     return view('login');
 });
 
+Route::get('/register-school', function() {
+    return view('register-school');
+});
+
 Route::get('/lupa-password', function() {
     return view('auth.passwords.reset');
 })->name('lupa-password');
@@ -74,3 +78,19 @@ Route::get('/op-data-op/detail-family', function() {
 Route::get('/op-data-op/detail-study', function() {
     return view('operator.detailopstudy');
 })->name('opdetailopstudy');
+
+Route::get('/op-data-siswa/detail', function() {
+    return view('operator.detailsiswa');
+})->name('opdetailsiswa');
+
+Route::get('/op-data-siswa/detail-diri', function() {
+    return view('operator.detailsiswadiri');
+})->name('opdetailsiswadiri');
+
+Route::get('/op-data-siswa/detail-family', function() {
+    return view('operator.detailsiswafam');
+})->name('opdetailsiswafam');
+
+Route::get('/op-kehadiran-siswa', function() {
+    return view('operator.kehadiransiswa');
+})->name('opkehadiransiswa');

@@ -7,83 +7,34 @@
 @stop
 <?php $totalSiswa = 100;?>
 @section('content')
+    
     @php
-    $heads = [
-        'ID',
-        'Name',
-        ['label' => 'Phone', 'width' => 40],
-        ['label' => 'Actions', 'no-export' => true, 'width' => 5],
-    ];
-
-    $btnEdit = '<button class="btn btn-xs" title="Approve">
-                    <i class="fa fa-lg fa-fw fa-check color-ijo-cs"></i>
-                </button>';
-    $btnDelete = '<button class="btn btn-xs text-danger" title="Reject">
-                    <i class="fa fa-lg fa-fw fa-times"></i>
-                </button>';
-    $btnDetails = '<button class="btn btn-xs text-teal" title="Details">
-                    <i class="fa fa-lg fa-fw fa-eye"></i>
-                </button>';
-
-    $config = [
-        'data' => [
-            [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-        ],
-        'order' => [[1, 'asc']],
-        'columns' => [null, null, null, ['orderable' => false]],
-    ];
-    $config["lengthMenu"] = [ 10, 50, 100, 500];
-    @endphp
-    <div class="row">
-        <div class="col-12">
-            <div class="card card-outline card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Daftar Pengajuan</h3>
-                </div>
-                
-                <div class="card-body">
-                    <x-adminlte-datatable id="table1" :heads="$heads" :config="$config" theme="light" striped hoverable>
-                        @foreach($config['data'] as $row)
-                            <tr>
-                                @foreach($row as $cell)
-                                    <td>{!! $cell !!}</td>
-                                @endforeach
-                            </tr>
-                        @endforeach
-                    </x-adminlte-datatable>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @php
+    $url = url("/op-data-siswa/detail");
     $heads = [
         '#',
-        'Name',
-        ['label' => 'Phone', 'width' => 40],
-        ['label' => 'Actions', 'no-export' => true, 'width' => 5],
+        'Nisn',
+        ['label' => 'Nama Siswa', 'width' => 40],
+        ['label' => 'Email', 'no-export' => true, 'width' => 30],
+        ['label' => 'Kelas', 'no-export' => true, 'width' => 5],
     ];
 
     $btnEdit = '<button class="btn btn-xs text-primary" title="Edit">
                     <i class="fa fa-lg fa-fw fa-pen"></i>
                 </button>';
-    $btnDelete = '<button class="btn btn-xs text-danger" title="Delete">
+    $btnDelete = '<button class="btn btn-xs text-danger" data-toggle="modal" data-target="#modalCustomDelete" title="Delete">
                     <i class="fa fa-lg fa-fw fa-trash"></i>
                 </button>';
-    $btnDetails = '<button class="btn btn-xs text-teal" title="Details">
-                    <i class="fa fa-lg fa-fw fa-eye"></i>
-                </button>';
+    $btnDetails = '<a href="'.$url.'" class="btn btn-xs text-teal" title="Details">
+                    <i class="fa fa-lg fa-fw fa-eye"></i></a>';
 
     $config = [
         'data' => [
-            [22, 'John Bender', '+02 (123) 123456789', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [19, 'Sophia Clemens', '+99 (987) 987654321', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
-            [3, 'Peter Sousa', '+69 (555) 12367345243', '<nobr>'.$btnEdit.$btnDelete.$btnDetails.'</nobr>'],
+            [22,2232133213, 'John Bender', 'Email', '7A', '<nobr>'.$btnDetails.$btnDelete.'</nobr>'],
+            [19,2232133213, 'Sophia Clemens', 'Email', '7B', '<nobr>'.$btnDetails.$btnDelete.'</nobr>'],
+            [3,2232133213, 'Peter Sousa','Email', '7C', '<nobr>'.$btnDetails.$btnDelete.'</nobr>'],
         ],
         'order' => [[1, 'asc']],
-        'columns' => [null, null, null, ['orderable' => false]],
+        'columns' => [null, null, null, ['orderable' => false], ['orderable' => false], ['orderable' => false]],
     ];
     $config["lengthMenu"] = [ 10, 50, 100, 500];
     @endphp
@@ -105,7 +56,7 @@
 
                     </div>
                     <div clas="col-4">
-                        <x-adminlte-button label="Import Data Siswa" theme="biru-sp-cs"/>
+                        <x-adminlte-button label="Import Data Siswa" data-toggle="modal" data-target="#modalUploadFile" theme="biru-sp-cs"/>
                     </div>
                 </div>
                     <x-adminlte-datatable id="table2" :heads="$heads" :config="$config" theme="light" striped hoverable>
@@ -121,4 +72,52 @@
             </div>
         </div>
     </div>
+
+    <x-adminlte-modal id="modalUploadFile" title="Tambah Data Siswa" size="lg" theme="biru-sp-cs"
+        icon="" v-centered static-backdrop scrollable>
+        <div style="margin: auto;width: 50%;padding: 10px;text-align:center;">
+            <div style="margin-bottom:20px;color:#D81159;">
+                <span>Silakan upload data siswa yang akan anda tambahkan</span>
+                
+            </div>
+            <x-adminlte-input-file name="ifPholder" igroup-size="sm" placeholder="Choose a file...">
+                <x-slot name="prependSlot">
+                    <div class="input-group-text bg-lightblue">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input-file>
+            <a href="#"><span>Download Template Import Data Guru</span></a>
+            
+        </div>
+
+        <x-slot name="footerSlot">
+            <x-adminlte-button class="mr-auto" theme="success" label="Upload"/>
+            <x-adminlte-button theme="danger" label="Batal" data-dismiss="modal"/>
+        </x-slot>
+    </x-adminlte-modal>
+    <x-adminlte-modal id="modalCustomDelete" title="Hapus Data Guru" size="lg" theme="biru-sp-cs"
+        icon="" v-centered static-backdrop scrollable>
+        <div style="height:400px;margin: auto;width: 50%;padding: 10px;text-align:center;">
+            <div style="height:100px;margin-top:80px;color:#D81159;">
+                <i class="far fa-lg fa-fw fa-question-circle" style="font-size: 100px;"></i>
+            </div>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Data siswa, akan anda hapus</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Atas Nama siswa 1</span>
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Dengan Email Email 1</span>
+            <br />
+            <br />
+            <br />
+            <span style="font-size: 20px;font-weight: 700;">Apakah anda yakin ?</span>
+            
+        </div>
+
+        <x-slot name="footerSlot">
+            <x-adminlte-button class="mr-auto" theme="success" label="Hapus"/>
+            <x-adminlte-button theme="danger" label="Batal" data-dismiss="modal"/>
+        </x-slot>
+    </x-adminlte-modal>
 @stop
