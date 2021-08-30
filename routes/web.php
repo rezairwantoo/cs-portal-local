@@ -94,3 +94,7 @@ Route::get('/op-data-siswa/detail-family', function() {
 Route::get('/op-kehadiran-siswa', function() {
     return view('operator.kehadiransiswa');
 })->name('opkehadiransiswa');
+
+Route::get('/op-laporan-nilai-siswa', function() {
+    return view('operator.laporannilaisiswa');
+})->name('oplaporannilaisiswa');

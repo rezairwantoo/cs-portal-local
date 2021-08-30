@@ -270,7 +270,7 @@ return [
         ['header' => 'Kesiswaan'],
         [
             'text' => 'Laporan Nilai',
-            'url'  => '',
+            'url'  => 'op-laporan-nilai-siswa',
             'icon' => 'fas fa-fw fa-address-book',
         ],
         [
