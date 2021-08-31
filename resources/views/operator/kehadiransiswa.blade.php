@@ -10,11 +10,11 @@
 
     @php
     $heads = [
-        ['label' => '#', 'width' => 5],
-        'NIP',
-        ['label' => 'Nama Guru', 'width' => 40],
-        ['label' => 'Email Guru', 'width' => 40],
-        ['label' => 'Tipe', 'width' => 40],
+        ['label' => '#', 'width' => 20],
+        ['label' => 'Nama Siswa', 'width' => 20],
+        ['label' => 'Tanggal Pertemuan', 'width' => 20],
+        ['label' => 'Jam', 'width' => 20],
+        ['label' => 'Kehadiran', 'width' => 20],
     ];
 
     $url = url("/op-data-guru/detail");

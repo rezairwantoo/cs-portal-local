@@ -98,3 +98,11 @@ Route::get('/op-kehadiran-siswa', function() {
 Route::get('/op-laporan-nilai-siswa', function() {
     return view('operator.laporannilaisiswa');
 })->name('oplaporannilaisiswa');
+
+Route::get('/op-laporan-nilai-siswa/semester-detail', function() {
+    return view('operator.laporansemester');
+})->name('oplaporannilaisemester');
+
+Route::get('/op-laporan-nilai-siswa/harian-siswa', function() {
+    return view('operator.laporanhariansiswa');
+})->name('oplaporanhariansiswa');

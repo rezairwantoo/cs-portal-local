@@ -10,21 +10,13 @@
 
     @php
     $heads = [
-        ['label' => '#', 'width' => 5],
-        'NISN',
-        ['label' => 'Nama Siswa', 'width' => 40],
-        ['label' => 'Kelas', 'width' => 40],
-    ];
-
-    $headsDetail = [
-        ['label' => '#', 'width' => 5],
-        'Kelas',
-        ['label' => 'Semester'],
-        ['label' => 'Total Pengetahuan'],
-        ['label' => 'Total Keterampilan'],
-        ['label' => 'Total Nilai'],
-        ['label' => 'Rata - Rata Nilai'],
-        ['label' => ''],
+        ['label' => '#', 'width' => 10],
+        ['label' => 'Nama Tugas/Quiz/Ujian', 'width' => 10],
+        ['label' => 'Jenis', 'width' => 10],
+        ['label' => 'Tanggal Diberikan', 'width' => 10],
+        ['label' => 'Batas Akhir Pengumpulan', 'width' => 10],
+        ['label' => 'Nilai', 'width' => 10],
+        ['label' => '', 'width' => 10],
     ];
 
     $url = url("/op-laporan-nilai-siswa/semester-detail");
@@ -39,27 +31,35 @@
 
     $config = [
         'data' => [
-            [1, '1234546654', 'Nama Siswa 1', '7A' ],
-            [2, '1234546654', 'Nama Siswa 2', '7A' ],
-            [3, '1234546654', 'Nama Siswa 3', '7A' ],
-            [4, '1234546654', 'Nama Siswa 4', '7A' ],
+            [1, 'Tugas 1', 'Tugas', '23 September 2021', '23 September 2021', '90', '<span style="color:green;">Tepat Waktu</span>' ],
+            [2, 'Quiz 1',  'Quiz',  '23 September 2021', '23 September 2021', '90', '<span style="color:red;">Telat Mengumpulkan</span>' ],
+            [3, 'Ujian 1', 'Ujian', '23 September 2021', '23 September 2021', '90', '<span style="color:green;">Tepat Waktu</span>' ],
+            [4, 'Tugas 1', 'Tugas', '23 September 2021', '23 September 2021', '90', '<span style="color:red;">Telat Mengumpulkan</span>' ],
         ],
         'order' => [[1, 'asc']],
         'columns' => [null, null, null, ['orderable' => false]],
     ];
     $config["lengthMenu"] = [ 10, 50, 100, 500];
 
-    $configDetail = [
+    $headsHadir = [
+        ['label' => '#', 'width' => 20],
+        ['label' => 'Nama Siswa', 'width' => 20],
+        ['label' => 'Tanggal Pertemuan', 'width' => 20],
+        ['label' => 'Jam', 'width' => 20],
+        ['label' => 'Kehadiran', 'width' => 20],
+    ];
+
+    $configHadir = [
         'data' => [
-            [1, '7A', 'Ganjil', '1290', '1290', '1290', '90', '<nobr>'.$btnDetails.'</nobr>' ],
-            [2, '7A', 'Genap',  '1290', '1290', '1290', '90', '<nobr>'.$btnDetails.'</nobr>' ],
-            [3, '7B', 'Ganjil', '1290', '1290', '1290', '90', '<nobr>'.$btnDetails.'</nobr>' ],
-            [4, '7B', 'Genap',  '1290', '1290', '1290', '90', '<nobr>'.$btnDetails.'</nobr>' ],
+            [1, 'Nama Siswa 1', '23 September 2021', '14:00 - 15:30', '<span style="color:green;">Hadir</span>'],
+            [2, 'Nama Siswa 2', '23 September 2021', '14:00 - 15:30', '<span style="color:red;">Tanpa Keterangan</span>'],
+            [3, 'Nama Siswa 3', '23 September 2021', '14:00 - 15:30', '<span style="color:blue;">Izin</span>'],
+            [4, 'Nama Siswa 4', '23 September 2021', '14:00 - 15:30', '<span style="color:orange;">Sakit</span>'],
         ],
         'order' => [[1, 'asc']],
-        'columns' => [null, null, null,null, null, null, ['orderable' => false], ['orderable' => false]],
+        'columns' => [null, null, null,null, ['orderable' => false]],
     ];
-    $configDetail["lengthMenu"] = [ 10, 50, 100, 500];
+    $configHadir["lengthMenu"] = [ 10, 50, 100, 500];
     @endphp
     <div class="row">
         <div class="col-12">
@@ -102,11 +102,19 @@
         <div class="col-12">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Detail Laporan Nilai Siswa</h3>
+                    <h3 class="card-title">Daftar Hadir Siswa</h3>
                 </div>
                 
                 <div class="card-body">
-                    <div class="row">
+                <div class="row">
+                        <div class="col-3">
+                            <x-adminlte-select2 label="Tahun Ajaran"  name="sel2Basic">
+                                <option></option>
+                                <option disabled>2021-2020</option>
+                                <option selected>2020-2019</option>
+                            </x-adminlte-select2>
+
+                        </div>
                         <div class="col-3">
                             <x-adminlte-select2 label="Kelas" name="sel2Basic">
                                 <option>Seluruh Kelas</option>
@@ -116,10 +124,16 @@
                         </div>
                         
                         <div class="col-3">
-                            <x-adminlte-select2 label="Semester" name="sel2Basic">
-                                <option disabled>Ganjil</option>
-                                <option selected>Genap</option>
-                            </x-adminlte-select2>
+                            @php
+                                $configDate = ['format' => 'DD/MM/YYYY'];
+                            @endphp
+                            <x-adminlte-input-date label="Tanggal Pertemuan" name="idDateOnly" :config="$configDate" placeholder="Choose a date...">
+                                <x-slot name="appendSlot">
+                                    <div class="input-group-text bg-gradient-danger">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                </x-slot>
+                            </x-adminlte-input-date>
                         </div>
 
                         <div clas="col-3">
@@ -128,8 +142,8 @@
                     </div>
                     
                     <br />
-                    <x-adminlte-datatable id="table3" :heads="$headsDetail" :config="$configDetail" theme="light" striped hoverable>
-                        @foreach($config['data'] as $row)
+                    <x-adminlte-datatable id="table3" :heads="$headsHadir" :config="$configHadir" theme="light" striped hoverable>
+                        @foreach($configHadir['data'] as $row)
                             <tr>
                                 @foreach($row as $cell)
                                     <td>{!! $cell !!}</td>
