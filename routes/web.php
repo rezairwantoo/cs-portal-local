@@ -106,3 +106,15 @@ Route::get('/op-laporan-nilai-siswa/semester-detail', function() {
 Route::get('/op-laporan-nilai-siswa/harian-siswa', function() {
     return view('operator.laporanhariansiswa');
 })->name('oplaporanhariansiswa');
+
+Route::get('/op-jadwal-pelajaran', function() {
+    return view('operator.jadwalpelajaran');
+})->name('opjadwalpelajaran');
+
+Route::get('/op-jadwal-pelajaran/add', function() {
+    return view('operator.jadwaladd');
+})->name('opjadwaladd');
+
+Route::get('/op-jadwal-pelajaran/edit', function() {
+    return view('operator.jadwaledit');
+})->name('jadwaledit');

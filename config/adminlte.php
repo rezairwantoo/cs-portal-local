@@ -281,7 +281,7 @@ return [
         ['header' => 'Pembelajaran'],
         [
             'text' => 'Jadwal',
-            'url'  => '',
+            'url'  => 'op-jadwal-pelajaran',
             'icon' => 'fas fa-fw fa-calendar-alt',
         ],
         [
