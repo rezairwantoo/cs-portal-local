@@ -296,7 +296,7 @@ return [
         ],
         [
             'text' => 'Kelas',
-            'url'  => '',
+            'url'  => 'op-kelas',
             'icon' => 'fas fa-fw fa-window-maximize',
         ]
         

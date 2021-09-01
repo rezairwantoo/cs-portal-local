@@ -130,3 +130,7 @@ Route::get('/op-mata-pelajaran/add', function() {
 Route::get('/op-modul', function() {
     return view('operator.modul');
 })->name('modul');
+
+Route::get('/op-kelas', function() {
+    return view('operator.kelas');
+})->name('kelas');

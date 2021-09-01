@@ -11,10 +11,9 @@
     @php
     $heads = [
         ['label' => '#', 'width' => 5],
-        ['label' => 'Nama Mata Pelajaran', 'width' => 20],
-        ['label' => 'Nama Modul', 'width' => 20],
-        ['label' => 'Tingkat', 'width' => 20],
-        ['label' => '', 'width' => 20],
+        ['label' => 'Nama Kelas', 'width' => 45],
+        ['label' => 'Nama Walikelas', 'width' => 45],
+        ['label' => '', 'width' => 5],
     ];
 
     $url = url("/op-jadwal-pelajaran/edit");
@@ -31,13 +30,13 @@
     $btnDeactivate = '<button class="btn btn-xs text-danger" title="Non Aktifkan"><i class="fa fa-lg fa-fw fa-times"></i></button>';
     $config = [
         'data' => [
-            [1, 'Bahasa Indonesia', 'Bahasa Indonesia modul', '7',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [2, 'Bahasa Indonesia', 'Bahasa Indonesia modul', '7',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [3, 'Bahasa Indonesia', 'Bahasa Indonesia modul', '7',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            [4, 'Bahasa Indonesia', 'Bahasa Indonesia modul', '7',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
+            [1, '7A', 'Walikelas Walikelas',  '<nobr>'.$btnDelete.'</nobr>'],
+            [2, '7A', 'Walikelas Walikelas',  '<nobr>'.$btnDelete.'</nobr>'],
+            [3, '7A', 'Walikelas Walikelas',  '<nobr>'.$btnDelete.'</nobr>'],
+            [4, '7A', 'Walikelas Walikelas',  '<nobr>'.$btnDelete.'</nobr>'],
         ],
         'order' => [[1, 'asc']],
-        'columns' => [null, null, null, null, ['orderable' => false]],
+        'columns' => [null, null, null, ['orderable' => false]],
     ];
     $config["lengthMenu"] = [ 10, 50, 100, 500];
 
@@ -53,7 +52,7 @@
                 <div class="card-body">
                     <div class="row">
                         <a data-toggle="modal" data-target="#modalAddMataPelajaran"  class="btn btn-biru-sp-cs" label="Tambah Jadwal" theme="biru-sp-cs" >
-                            Tambah Modul
+                            Tambah Kelas
                         </a>
                     </div>
                     
@@ -77,35 +76,15 @@
         <div style="height:400px;margin: auto;width: 50%;padding: 10px;">
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-input name="iLabel" label="Nama Modul" placeholder="Nama" disable-feedback/>
+                    <x-adminlte-input name="iLabel" label="Nama Kelas" placeholder="Nama" disable-feedback/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <x-adminlte-select2 label="Mata Pelajaran" name="sel2Basic">
-                        <option>Bahasa Indonesia</option>
-                        <option disabled>Matematika</option>
+                    <x-adminlte-select2 label="Wali Kelas" name="sel2Basic">
+                        <option>Guru 1</option>
+                        <option disabled>Guru 2</option>
                     </x-adminlte-select2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <x-adminlte-select2 label="Tingkat" name="sel2Basic">
-                        <option>7</option>
-                        <option disabled>8</option>
-                    </x-adminlte-select2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <label>File</label>
-                    <x-adminlte-input-file name="ifPholder" igroup-size="sm" placeholder="Choose a file...">
-                    <x-slot name="prependSlot">
-                        <div class="input-group-text bg-lightblue">
-                            <i class="fas fa-upload"></i>
-                        </div>
-                    </x-slot>
-                </x-adminlte-input-file>
                 </div>
             </div>
         </div>
