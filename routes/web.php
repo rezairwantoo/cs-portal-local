@@ -126,3 +126,7 @@ Route::get('/op-mata-pelajaran', function() {
 Route::get('/op-mata-pelajaran/add', function() {
     return view('operator.matapelajaranadd');
 })->name('matapelajaran');
+
+Route::get('/op-modul', function() {
+    return view('operator.modul');
+})->name('modul');

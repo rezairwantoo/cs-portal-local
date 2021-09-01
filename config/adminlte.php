@@ -291,7 +291,7 @@ return [
         ],
         [
             'text' => 'Modul',
-            'url'  => '',
+            'url'  => 'op-modul',
             'icon' => 'fas fa-fw fa-book',
         ],
         [
