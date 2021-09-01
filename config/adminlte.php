@@ -286,7 +286,7 @@ return [
         ],
         [
             'text' => 'Mata Pelajaran',
-            'url'  => '',
+            'url'  => 'op-mata-pelajaran',
             'icon' => 'fas fa-fw fa-newspaper',
         ],
         [

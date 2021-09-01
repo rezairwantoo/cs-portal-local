@@ -118,3 +118,11 @@ Route::get('/op-jadwal-pelajaran/add', function() {
 Route::get('/op-jadwal-pelajaran/edit', function() {
     return view('operator.jadwaledit');
 })->name('jadwaledit');
+
+Route::get('/op-mata-pelajaran', function() {
+    return view('operator.matapelajaran');
+})->name('matapelajaran');
+
+Route::get('/op-mata-pelajaran/add', function() {
+    return view('operator.matapelajaranadd');
+})->name('matapelajaran');
