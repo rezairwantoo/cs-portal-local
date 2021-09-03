@@ -189,7 +189,7 @@ return [
 
     'use_route_url' => false,
     'dashboard_url' => 'home',
-    'logout_url' => 'logout',
+    'logout_url' => 'logout-portal',
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
@@ -239,7 +239,7 @@ return [
                 ],
                 [
                     'text' => 'Logout',
-                    'url'  => '#',
+                    'url'  => 'logout-portal',
                 ],
             ]
         ],

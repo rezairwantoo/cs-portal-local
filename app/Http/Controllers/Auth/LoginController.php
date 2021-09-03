@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthApi;
+use Session;
 
 class LoginController extends Controller
 {
@@ -36,5 +39,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function loginPortal(Request $request) {
+        // print_r($request->all());die;
+        $loginStat = AuthApi::DoLogin($request);
+        if ($loginStat) {
+            return redirect('/home');
+        }
+    }
+
+    public function showLoginForm(Request $request) {
+        $session = Session::get('_tousr');
+        if (isset($session)) {
+            return redirect('/home');
+        }
+        
+        return view('auth.login');
+    }
+
+    public function logoutPortal(Request $request) {
+        Session::flush();
+        return redirect('/login');
     }
 }

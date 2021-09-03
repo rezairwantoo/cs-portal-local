@@ -17,11 +17,11 @@
                 </div>
                 <br />
                 <h5 class="card-title text-center" style="color: #0077B6">Login Portal </h5>
-                <form method="POST" action="#" class="form-signin" autocomplete="off">
+                <form method="POST" action="{{url('login-portal')}}" class="form-signin" autocomplete="off">
                     @csrf
 
                     <div class="form-label-group">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('Masukan Email address') }}" autofocus>
+                        <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('Masukan Email address') }}" autofocus>
 
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">

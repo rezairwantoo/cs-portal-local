@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/login', function() {
-    return view('login');
 });
 
 Route::get('/register-school', function() {
@@ -134,3 +130,6 @@ Route::get('/op-modul', function() {
 Route::get('/op-kelas', function() {
     return view('operator.kelas');
 })->name('kelas');
+
+Route::post('/login-portal', [App\Http\Controllers\Auth\LoginController::class, 'loginPortal']);
+Route::get('/logout-portal', [App\Http\Controllers\Auth\LoginController::class, 'logoutPortal']);
