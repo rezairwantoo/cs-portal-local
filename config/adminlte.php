@@ -232,14 +232,17 @@ return [
             'text' => '',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+            'can-access'   => 'all',
             'submenu' => [
                 [
                     'text' => 'Profil',
                     'url'  => '#',
+                    'can-access'   => 'all'
                 ],
                 [
                     'text' => 'Logout',
                     'url'  => 'logout-portal',
+                    'can-access'   => 'all'
                 ],
             ]
         ],
@@ -250,56 +253,78 @@ return [
             'url'         => 'home',
             'icon'        => 'fas fa-chart-line',
             'label_color' => 'success cs-theme',
+            'can-access'   => 'operator'
         ],
-        ['header' => 'Data Pengguna'],
+        ['header' => 'Data Pengguna', 'can-access'   => 'operator'],
         [
             'text' => 'Data Guru',
             'url'  => 'op-data-guru',
             'icon' => 'fas fa-fw fa-id-badge',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Data Staff',
             'url'  => 'op-data-staff',
             'icon' => 'fas fa-fw fa-id-badge',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Data Siswa',
             'url'  => 'op-data-siswa',
             'icon' => 'fas fa-fw fa-id-badge',
+            'can-access'   => 'operator'
         ],
-        ['header' => 'Kesiswaan'],
+        ['header' => 'Kesiswaan', 'can-access'   => 'operator'],
         [
             'text' => 'Laporan Nilai',
             'url'  => 'op-laporan-nilai-siswa',
             'icon' => 'fas fa-fw fa-address-book',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Kehadiran Siswa',
             'url'  => 'op-kehadiran-siswa',
             'icon' => 'fas fa-fw fa-address-book',
+            'can-access'   => 'operator'
         ],
-        ['header' => 'Pembelajaran'],
+        ['header' => 'Pembelajaran', 'can-access'   => 'operator'],
         [
             'text' => 'Jadwal',
             'url'  => 'op-jadwal-pelajaran',
             'icon' => 'fas fa-fw fa-calendar-alt',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Mata Pelajaran',
             'url'  => 'op-mata-pelajaran',
             'icon' => 'fas fa-fw fa-newspaper',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Modul',
             'url'  => 'op-modul',
             'icon' => 'fas fa-fw fa-book',
+            'can-access'   => 'operator'
         ],
         [
             'text' => 'Kelas',
             'url'  => 'op-kelas',
             'icon' => 'fas fa-fw fa-window-maximize',
-        ]
-        
+            'can-access'   => 'operator'
+        ],
+        [
+            'text'        => 'Dashboard',
+            'url'         => 'home',
+            'icon'        => 'fas fa-chart-line',
+            'label_color' => 'success cs-theme',
+            'can-access'   => 'super-admin'
+        ],
+        [
+            'text' => 'Daftar Sekolah',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-newspaper',
+            'can-access'   => 'super-admin'
+        ],
     ],
 
     /*
@@ -322,6 +347,8 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+        App\Menu\Csmenu::class,
+
     ],
 
     /*

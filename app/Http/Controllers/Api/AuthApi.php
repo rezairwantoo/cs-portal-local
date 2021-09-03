@@ -44,6 +44,7 @@ class AuthApi
 
             if ($response->successful()) {
                 Session::put('_tousr', $response->body());
+                Session::put('_tokusr', $token);
                 return true;
             } else {
                 return false;
