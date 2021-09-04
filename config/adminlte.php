@@ -253,64 +253,64 @@ return [
             'url'         => 'home',
             'icon'        => 'fas fa-chart-line',
             'label_color' => 'success cs-theme',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
-        ['header' => 'Data Pengguna', 'can-access'   => 'operator'],
+        ['header' => 'Data Pengguna', 'can-access'   => 'super-user'],
         [
             'text' => 'Data Guru',
             'url'  => 'op-data-guru',
             'icon' => 'fas fa-fw fa-id-badge',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Data Staff',
             'url'  => 'op-data-staff',
             'icon' => 'fas fa-fw fa-id-badge',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Data Siswa',
             'url'  => 'op-data-siswa',
             'icon' => 'fas fa-fw fa-id-badge',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
-        ['header' => 'Kesiswaan', 'can-access'   => 'operator'],
+        ['header' => 'Kesiswaan', 'can-access'   => 'super-user'],
         [
             'text' => 'Laporan Nilai',
             'url'  => 'op-laporan-nilai-siswa',
             'icon' => 'fas fa-fw fa-address-book',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Kehadiran Siswa',
             'url'  => 'op-kehadiran-siswa',
             'icon' => 'fas fa-fw fa-address-book',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
-        ['header' => 'Pembelajaran', 'can-access'   => 'operator'],
+        ['header' => 'Pembelajaran', 'can-access'   => 'super-user'],
         [
             'text' => 'Jadwal',
             'url'  => 'op-jadwal-pelajaran',
             'icon' => 'fas fa-fw fa-calendar-alt',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Mata Pelajaran',
             'url'  => 'op-mata-pelajaran',
             'icon' => 'fas fa-fw fa-newspaper',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Modul',
             'url'  => 'op-modul',
             'icon' => 'fas fa-fw fa-book',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text' => 'Kelas',
             'url'  => 'op-kelas',
             'icon' => 'fas fa-fw fa-window-maximize',
-            'can-access'   => 'operator'
+            'can-access'   => 'super-user'
         ],
         [
             'text'        => 'Dashboard',
