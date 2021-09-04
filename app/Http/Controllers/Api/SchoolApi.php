@@ -11,6 +11,7 @@ class SchoolApi
 {
     const ApiURL = "http://api.catatansekolah.net";
     const CreateSchoolPath = "/api/admin/schools";
+    const GetSchoolPath = "/api/admin/schools";
 
     public static function DoAddSchool(Request $request) {
         $apiUrl = env('APP_API_URL', self::ApiURL);
@@ -42,6 +43,29 @@ class SchoolApi
             return [
                 "status" => false,
                 "messages" => $respError['message']
+            ];
+        }
+        
+    }
+
+    public static function DoGetSchool(Request $request) {
+        $apiUrl = env('APP_API_URL', self::ApiURL);
+        $session = Session::get('_tokusr');
+        $url = $apiUrl.self::GetSchoolPath;
+        $response = Http::withToken($session)->get($url, [
+        ]);
+        if ($response->successful()) {
+            return [
+                "status" => true,
+                "messages" => 'Berhasil Menambahkan Data Sekolah',
+                "data" => $response->json()['data'],
+            ];
+        } else {
+            $respError = $response->json()['error'];
+            return [
+                "status" => false,
+                "messages" => $respError['message'],
+                "data" => [],
             ];
         }
         

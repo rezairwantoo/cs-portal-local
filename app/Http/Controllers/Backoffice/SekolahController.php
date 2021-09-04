@@ -22,4 +22,13 @@ class SekolahController extends Controller
         return redirect()->back()->withInput($request->all())->withErrors([$resp['messages']]);
     }
 
+    public function SekolahGetList(Request $request) {
+        $resp = SchoolApi::DoGetSchool($request);
+        $data['data'] = $resp['data'];
+        if ($resp['status']) {
+            return $data;
+        }
+        return "";
+    }
+
 }

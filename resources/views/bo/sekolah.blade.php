@@ -10,7 +10,6 @@
 
     @php
     $heads = [
-        ['label' => '#', 'width' => 5],
         ['label' => 'Nama Sekolah', 'width' => 20],
         ['label' => 'NPSN', 'width' => 20],
         ['label' => 'Tingkat Sekolah', 'width' => 10],
@@ -18,7 +17,6 @@
         ['label' => 'Email Sekolah', 'width' => 10],
         ['label' => 'Email Kepala Sekolah', 'width' => 10],
         ['label' => 'Alamat', 'width' => 10],
-        ['label' => '', 'width' => 5],
     ];
 
     $url = url("/op-jadwal-pelajaran/edit");
@@ -34,14 +32,11 @@
     $btnActivate = '<button class="btn btn-xs text-green" title="Aktifkan"><i class="fa fa-lg fa-fw fa-check"></i></button>';
     $btnDeactivate = '<button class="btn btn-xs text-danger" title="Non Aktifkan"><i class="fa fa-lg fa-fw fa-times"></i></button>';
     $config = [
-        'data' => [
-            [1, 'Sekolah', '2443242', 'SMP', 'Negeri', 'email@sekolah.ac.id', 'kepsek@sekolah.ac.id', 'jalan jalan supaya sehat dan segar',  '<nobr>'.$btnDelete.'</nobr>'],
-            [2, 'Sekolah', '2443242', 'SMP', 'Negeri', 'email@sekolah.ac.id', 'kepsek@sekolah.ac.id', 'jalan jalan supaya sehat dan segar',  '<nobr>'.$btnDelete.'</nobr>'],
-            [3, 'Sekolah', '2443242', 'SMP', 'Negeri', 'email@sekolah.ac.id', 'kepsek@sekolah.ac.id', 'jalan jalan supaya sehat dan segar',  '<nobr>'.$btnDelete.'</nobr>'],
-            [4, 'Sekolah', '2443242', 'SMP', 'Negeri', 'email@sekolah.ac.id', 'kepsek@sekolah.ac.id', 'jalan jalan supaya sehat dan segar',  '<nobr>'.$btnDelete.'</nobr>'],
-        ],
-        'order' => [[1, 'asc']],
-        'columns' => [null, null, null, null, null, null,null, null, ['orderable' => false]],
+        'order' => [],
+        'columns' => [["data"=> "name"],["data"=> "npsn"], ["data"=> "school_level"], ["data"=> "school_type"], ["data"=> "school_email"], ["data"=> "owner_email"],["data"=> "address"]],
+        "serverSide"=> true,
+        "ajax"=> "bo-sekolah/list",
+        "Processing"=> true,
     ];
     $config["lengthMenu"] = [ 10, 50, 100, 500];
 
@@ -60,24 +55,23 @@
                             Tambah Sekolah
                         </a>
                     </div>
-                    <br>
-                    @if($errors->any())
-                    <x-adminlte-callout theme="danger" title-class="text-danger text-uppercase"
-                        icon="fas fa-lg fa-exclamation-circle" title="Payment Error">
-                        <i>There was an error on the payment procedure!</i>
-                    </x-adminlte-callout>
-                    @endif
-                    
                     <br />
-                    <x-adminlte-datatable id="table2" :heads="$heads" :config="$config" theme="light" striped hoverable>
-                        @foreach($config['data'] as $row)
+                    <div class="table-responsive">
+                        <table id="table2" :heads="$heads" :config="$config" theme="light" class="table table-hover table-striped table-light dataTable no-footer"  style="width:100%">
+                        <thead>
                             <tr>
-                                @foreach($row as $cell)
-                                    <td>{!! $cell !!}</td>
-                                @endforeach
+                            <th>Nama Sekolah</th>
+                            <th>NPSN</th>
+                            <th>Tingkat Sekolah</th>
+                            <th>Tipe Sekolah</th>
+                            <th>Email Sekolah</th>
+                            <th>Email Kepala Sekolah</th>
+                            <th>Alamat</th>
                             </tr>
-                        @endforeach
-                    </x-adminlte-datatable>
+                        </thead>
+                        </table>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -132,3 +126,26 @@
         </x-slot>
     </x-adminlte-modal>
 @stop
+
+@push('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table2').DataTable({
+                "Processing": true,
+                "ajax": {
+                "url": "bo-sekolah/list",
+                "dataSrc": "data"
+                },
+                "columns": [
+                { "data": "name" },
+                { "data": "npsn" },
+                { "data": "school_level" },
+                { "data": "school_type" },
+                { "data": "school_email" },
+                { "data": "owner_email" },
+                { "data": "address" },
+                ]
+                });
+            });
+    </script>
+@endpush

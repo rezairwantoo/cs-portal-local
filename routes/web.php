@@ -141,3 +141,4 @@ Route::get('/bo-sekolah/add', function() {
 })->name('bosekolahadd');
 
 Route::post('/bo-sekolah/add',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahAdd']);
+Route::get('/bo-sekolah/list',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahGetList']);
