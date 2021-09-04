@@ -131,3 +131,13 @@ Route::get('/op-kelas', function() {
 
 Route::post('/login-portal', [App\Http\Controllers\Auth\LoginController::class, 'loginPortal']);
 Route::get('/logout-portal', [App\Http\Controllers\Auth\LoginController::class, 'logoutPortal']);
+
+Route::get('/bo-sekolah', function() {
+    return view('bo.sekolah');
+})->name('bosekolah');
+
+Route::get('/bo-sekolah/add', function() {
+    return view('bo.sekolahadd');
+})->name('bosekolahadd');
+
+Route::post('/bo-sekolah/add',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahAdd']);

@@ -321,7 +321,7 @@ return [
         ],
         [
             'text' => 'Daftar Sekolah',
-            'url'  => '#',
+            'url'  => 'bo-sekolah',
             'icon' => 'fas fa-fw fa-newspaper',
             'can-access'   => 'super-admin'
         ],
