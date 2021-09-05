@@ -142,3 +142,5 @@ Route::get('/bo-sekolah/add', function() {
 
 Route::post('/bo-sekolah/add',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahAdd']);
 Route::get('/bo-sekolah/list',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahGetList']);
+Route::get('/bo-sekolah/edit/{id}',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahEdit']);
+Route::post('/bo-sekolah/edit/{id}',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahEditPost']);
