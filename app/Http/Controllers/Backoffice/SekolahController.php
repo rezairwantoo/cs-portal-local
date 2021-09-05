@@ -24,7 +24,15 @@ class SekolahController extends Controller
 
     public function SekolahGetList(Request $request) {
         $resp = SchoolApi::DoGetSchool($request);
-        $data['data'] = $resp['data'];
+        // print_r($request->all());die;
+        // $data['data'] = $resp['data'];
+        $data = array(
+            "draw" => $request->input('draw'),
+            "recordsTotal" => count($resp['data']),
+            "recordsFiltered" => $resp['total'],
+            "data" => $resp['data']
+        );
+        // $data['totalData'] = count($resp['data']);
         if ($resp['status']) {
             return $data;
         }

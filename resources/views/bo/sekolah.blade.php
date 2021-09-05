@@ -60,6 +60,7 @@
                         <table id="table2" :heads="$heads" :config="$config" theme="light" class="table table-hover table-striped table-light dataTable no-footer"  style="width:100%">
                         <thead>
                             <tr>
+                            <th>#</th>
                             <th>Nama Sekolah</th>
                             <th>NPSN</th>
                             <th>Tingkat Sekolah</th>
@@ -67,6 +68,7 @@
                             <th>Email Sekolah</th>
                             <th>Email Kepala Sekolah</th>
                             <th>Alamat</th>
+                            <th></th>
                             </tr>
                         </thead>
                         </table>
@@ -132,18 +134,22 @@
         $(document).ready(function() {
             $('#table2').DataTable({
                 "Processing": true,
+                "lengthMenu": [10,20,50,100],
+                "serverSide": true,
+                "paging": true,
                 "ajax": {
-                "url": "bo-sekolah/list",
-                "dataSrc": "data"
+                "url": "bo-sekolah/list"
                 },
                 "columns": [
-                { "data": "name" },
-                { "data": "npsn" },
-                { "data": "school_level" },
-                { "data": "school_type" },
-                { "data": "school_email" },
-                { "data": "owner_email" },
-                { "data": "address" },
+                { "data": "index",'orderable': false },
+                { "data": "name", 'orderable': false },
+                { "data": "npsn", 'orderable': false },
+                { "data": "school_level" , 'orderable': false},
+                { "data": "school_type",'orderable': false },
+                { "data": "school_email",'orderable': false },
+                { "data": "owner_email", 'orderable': false },
+                { "data": "address",'orderable': false },
+                { "data": "action", 'orderable': false },
                 ]
                 });
             });
