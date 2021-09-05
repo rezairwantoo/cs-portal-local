@@ -47,6 +47,13 @@ class LoginController extends Controller
         if ($loginStat) {
             return redirect('/home');
         }
+
+        $loginStat = AuthApi::DoLoginUserNew($request);
+        if ($loginStat['status']) {
+            return view('auth.updatepassnewuser', ['datapengguna' => $loginStat['data']]);
+
+        }
+        return redirect()->back()->withInput($request->all())->withErrors([$loginStat['messages']]);
     }
 
     public function showLoginForm(Request $request) {

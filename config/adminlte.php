@@ -325,6 +325,12 @@ return [
             'icon' => 'fas fa-fw fa-newspaper',
             'can-access'   => 'super-admin'
         ],
+        [
+            'text' => 'Daftar Pengguna',
+            'url'  => 'bo-user',
+            'icon' => 'fas fa-fw fa-user',
+            'can-access'   => 'super-admin'
+        ],
     ],
 
     /*

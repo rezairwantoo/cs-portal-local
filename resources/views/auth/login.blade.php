@@ -17,6 +17,14 @@
                 </div>
                 <br />
                 <h5 class="card-title text-center" style="color: #0077B6">Login Portal </h5>
+                @if($errors->any())
+                    <x-adminlte-callout theme="danger" class="text-center" title-class="text-danger text-uppercase"
+                        icon="fas fa-lg fa-exclamation-circle" title="Login Pengguna Gagal">
+                        <i>{{$errors->first()}}</i>
+                    </x-adminlte-callout>
+                    @endif
+                    <br />
+                    <br />
                 <form method="POST" action="{{url('login-portal')}}" class="form-signin" autocomplete="off">
                     @csrf
 

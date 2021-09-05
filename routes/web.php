@@ -29,10 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home');
-
 Route::get('/op-data-guru', function() {
     return view('operator.opdataguru');
 })->name('opdataguru');
@@ -144,3 +140,11 @@ Route::post('/bo-sekolah/add',[App\Http\Controllers\Backoffice\SekolahController
 Route::get('/bo-sekolah/list',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahGetList']);
 Route::get('/bo-sekolah/edit/{id}',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahEdit']);
 Route::post('/bo-sekolah/edit/{id}',[App\Http\Controllers\Backoffice\SekolahController::class, 'SekolahEditPost']);
+
+Route::get('/bo-user', function() {
+    return view('bo.userlist');
+})->name('bouser');
+
+Route::get('/bo-user/add',[App\Http\Controllers\Backoffice\UserController::class, 'UserAdd'])->name("useradd");
+Route::post('/bo-user/add',[App\Http\Controllers\Backoffice\UserController::class, 'UserAddPost'])->name("useraddpost");
+Route::post('/bo-new-user/set-password',[App\Http\Controllers\Backoffice\UserController::class, 'UserSetNewPassword'])->name("usernewsetpass");
